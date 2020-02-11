@@ -74,7 +74,7 @@ for x in range (grid):
             phi_2_data_x.append(np.log10(E))
             phi_2_data_y.append(np.log10(F))
         
-# prepare for Fig2(a) inset
+# prepare for Fig2(a) illustration
 
         if abs(np.log10(phi_1_EF)-np.log10(phi_2_EF))<equal and abs(np.log10(phi_1_EF)-np.log10(E_tot))<equal and abs(np.log10(phi_2_EF)-np.log10(F_tot))<equal:
             phi_cross_data_x.append(np.log10(E))
@@ -105,7 +105,7 @@ plt.savefig('Fig2a-1.pdf')
 plt.show()
 
 
-#fig2(a) insect
+#fig2(a) illustration
 E1=E1/count1
 F1=F1/count1
 stable=[[E1,F1]]
@@ -119,7 +119,6 @@ stable.append([E3,F3])
 
 Si=[]
 for j in range (len(stable)):
-    #print(j)
     E_stat=stable[j][0]
     F_stat=stable[j][1]
     t=E_stat/F_stat
