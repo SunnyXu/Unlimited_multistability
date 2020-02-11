@@ -35,18 +35,11 @@ r = te.loada("""
 #Species initializations:     
 
     # select the some middle point on the curve of E_tot (F_tot), refer to paper supplementary 2.2
-     
-    # three stable points on the curve of phi_2
-    E = 14.68 
-    F = 14.68
     
-    # three stable points on the curve of phi_1
-    #E=14.68 #1.17 
-    #F=21.54 #1.33 
-
-    # only stable point #1, on the curve of phi_1
-    #E = 5.6 #0.74
-    #F = 562 #2.75
+    #Fig 4 
+    E = 2.8e3
+    F = 2.8e3
+    
 
     S1 = 0; #S0+S4=S_tot, so S1=S2=S3=0
     S2 = 0;
@@ -55,7 +48,7 @@ r = te.loada("""
     S0 = 2e3; #set initial alpha=0.2
     S4 = 8e3;
 
-#Parameters: only give the value once as am initial condition    
+#Parameters: only give the value once as an initial condition    
     a_E_0=8.12e-3; a_E_1=1.02e-1;  a_E_2=8.12e-3;  a_E_3=1.02e-1
     b_E_0=1.6e-2;  b_E_1=2.04e-1;  b_E_2=1.6e-2;   b_E_3=2.04e-1
     c_E_0_1=1e-1;  c_E_1_2=1e1;    c_E_2_3=1e-1;   c_E_3_4=1e1
@@ -71,14 +64,15 @@ r = te.loada("""
 
 S_tot=10e3 #unit change from microM (10e-6) to nanoM (10e-9)
 
+
 for x in range (100): #100 samples will be tested
     alpha=random.uniform(0,1)
     r.model["init(S0)"]=alpha*S_tot
     r.model["init(S4)"]=(1-alpha)*S_tot
     #to fix the log-plot issue
-    m1 = r.simulate (0.1, 100,  20000, ['time','S4'])
-    m2 = r.simulate (100, 1000, 20000, ['time','S4'])
-    m3 = r.simulate (1000, 1000000, 20000, ['time','S4'])    
+    m1 = r.simulate (0.1, 10,  20000, ['time','S4'])
+    m2 = r.simulate (10, 100, 20000, ['time','S4'])
+    m3 = r.simulate (100, 1000, 20000, ['time','S4'])    
     m = np.vstack((m1,m2,m3))
     plt.plot(np.log10(m[:,0]),np.log10(m[:,1:]))
     
