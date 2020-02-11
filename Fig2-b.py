@@ -33,9 +33,6 @@ r = te.loada("""
     FS1  -> S0+F; c_F_1_0*FS1;
 
 #Species initializations:     
-
-    # select the some middle point on the curve of E_tot (F_tot), refer to paper supplementary 2.2
-    
     #Fig 4 
     E = 2.8e3
     F = 2.8e3
