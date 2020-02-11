@@ -33,6 +33,8 @@ r = te.loada("""
     FS1  -> S0+F; c_F_1_0*FS1;
 
 #Species initializations:     
+
+    
     #Fig 4 
     E = 2.8e3
     F = 2.8e3
@@ -76,9 +78,16 @@ for x in range (100): #100 samples will be tested
     
 plt.xlabel('log$_{10}$[Time(s)]')
 plt.ylabel('log$_{10}$[S4(nM)]')
-plt.savefig('S4.pdf')
+plt.savefig('Fig2b.pdf')
 plt.show()
 
+
+str_sbml = r.getSBML()
+#print(str_sbml)
+
+f_out = open("multiStability.xml", "w+");
+f_out.write(str_sbml)
+f_out.close
 
 
 
